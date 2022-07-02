@@ -7,9 +7,13 @@ import YourNotice from './pages/YourNotice';
 import Error from './pages/Error';
 import {Route, Routes} from 'react-router-dom';
 import Footer from './Footer';
+import {useEffect} from 'react';
 
 
 function App() {
+  useEffect(() => {
+    document.title = "Notices Exclusive"
+  }, [])
   return (
     <>
       <Navbar />      

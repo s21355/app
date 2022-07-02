@@ -71,6 +71,26 @@ body{
     min-height: 90vh;
     background-color: #f5f5f5;
 }
+li {
+    list-style-type: none;
+  }
+.inp1{
+    height:50px;
+    border-width: 3px;
+    border-color: rgba(75, 83, 76, 0.32);
+    border-style: outset;
+    border-radius: 9px;
+    font-size: 16px;
+}
+.inp2{
+    height:100px;
+    border-width: 3px;
+    border-color: rgba(75, 83, 76, 0.32);
+    border-style: outset;
+    border-radius: 9px;
+    font-size: 16px;
+    word-break: break-word;
+}
 
 .nav{
     background-color: rgb(63, 63, 63);

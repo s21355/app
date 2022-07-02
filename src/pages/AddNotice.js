@@ -11,7 +11,7 @@ const formReducer = (state, event) => {
 
 export default function AddNotice() {
     const [formData, setFormData] = useReducer(formReducer, {});
-  const [submitting, setSubmitting] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -35,22 +35,24 @@ export default function AddNotice() {
       {submitting &&
        <div>
          You are submitting the following:
-         <ul>
+
            {Object.entries(formData).map(([name, value]) => (
-             <li key={name}><strong>{name}</strong>:{value.toString()}</li>
+             <li key={name}><strong>{name}</strong>: {value.toString()}</li>
            ))}
-         </ul>
+
        </div>
       }
       <form onSubmit={handleSubmit}>
-        <fieldset>
+
           <label>
             <p>Title</p>
-            <input name="title" onChange={handleChange}/>
+            <input name="title" className='inp1' onChange={handleChange}/>
             <p>Content</p>
-            <input name="content" onChange={handleChange}/>
+            <textarea name="content" className='inp2' onChange={handleChange}>
+            </textarea>
           </label>
-        </fieldset>
+            <br></br>
+            <br></br>
         <button type="submit" className='btn'>Submit</button>
       </form>
     </div>
