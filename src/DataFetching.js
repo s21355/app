@@ -15,13 +15,16 @@ export default function DataFetching() {
 
     return (
     <div className="post">
-        <>
+        
         <button
           onClick={() => {
+            
             const randomId = Math.round(Math.random())
             setRandomPost(posts[randomId])
+            
           }}
         >
+          
           Get random post
         </button>
         {randomPost && (
@@ -38,7 +41,7 @@ export default function DataFetching() {
             </li>
         </ul>
         ))} */}
-        </>
+        
     </div>
     )
 }
