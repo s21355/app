@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import "./style.css";
-import Post from './records.json';
+
 
 export default function DataFetching() {
   const [posts, setPosts] = useState([]);
+  const [randomPost, setRandomPost] = useState([null]);
 
   const url = "https://jsonplaceholder.typicode.com/posts";
 
@@ -11,61 +12,36 @@ export default function DataFetching() {
     fetch(url)
       .then(res => {
         if (!res.ok) {
-          return Error("Oh no");
+          return Error("Error!");
         }
         return res.json();
       })
-      .then(data => setPosts(data));
-  });
+      .then(data => {
+        setPosts(data)
+        const randomId = Math.round(Math.random() * data.length)
+        setRandomPost(data[randomId])
+      });
+  }, []);
 
   return (
-    <div className="post">
-      <h1>Posts</h1>
-      <h2>...are here</h2>
-
-      {posts.map(post => (
-        <div key={post.id}>{post.title}</div>
-      ))}
-    </div>
-  );
-}
-/*
-    const [posts, setPosts] = useState([]);
-    const [randomPost, setRandomPost] = useState(null)
-
-    useEffect(() => {    
-        fetch('http://jsonplaceholder.typicode.com/users/1/posts')
-            .then(res => res.json())
-            .then(data => setPosts(data.posts));
-    }, []);
-
-    return (
-    <div className="post">
-        <>
-        <button
-          onClick={() => {
-            const randomId = Math.round(Math.random())
-            setRandomPost(posts[randomId])
-            console.log(randomId)
-          }}
-        >
-          Get random post
-        </button>
+    <div className="posts">   
+        <div className='post'>
         {randomPost && (
           <>
-            {randomPost.title}
+            <h1>{randomPost.title}</h1>
             {randomPost.body}
           </>
         )}
-        {/* {Post?.map(post => (
-        <ul>
-            <li key={post.id}>
-                <h3>{post.title}</h3>
-                <p>{post.body}</p>
-            </li>
-        </ul>
-        ))} }
-        </>
+        </div>
+        
+        <button className='btn'
+          onClick={() => {
+            const randomPostId = Math.round(Math.random() * posts.length)
+            setRandomPost(posts[randomPostId])
+          }}
+        >
+          Next
+        </button>
     </div>
-    )
-}*/
+  );
+}

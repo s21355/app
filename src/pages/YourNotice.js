@@ -1,3 +1,7 @@
+import DataFetching from '../DataFetching.js';
+
 export default function YourNotice() {
-    return <h1> YourNotice </h1>
+    return (
+    <DataFetching />
+    )
 }
